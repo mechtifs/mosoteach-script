@@ -10,6 +10,7 @@ accounts = [{'account': '111', 'password': 'aaa'},
 # Main function
 for account in accounts:
     print('Account:', account['account'])
+
     # Log in
     headers = {
         'Host': 'coreapi-proxy.mosoteach.cn',
@@ -56,7 +57,7 @@ for account in accounts:
             'Origin': 'https://www.mosoteach.cn',
             'X-Requested-With': 'XMLHttpRequest',
         })
-        for res in soup.select('.res-row-open-enable'):
+        for res in soup.findAll('div', {'data-mime': 'video'}):
             if res.select('span')[9].attrs['style'] == 'color:#8fc31f':
                 continue
             dur = str(
